@@ -13,11 +13,12 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - name: configure
-      run: ./configure
-    - name: make
-      run: make
-    - name: make check
-      run: make check
-    - name: make distcheck
-      run: make distcheck
+    # compile
+    - name: compile
+      run: gcc ./code/hello.c -o ./hello.out
+    # run
+    - name: run
+      run: ./hello.out
+    # remove compiled file
+    - name: remove
+      run: rm ./hello.out
