@@ -23,6 +23,3 @@ jobs:
     # run
     - name: run
       run: ./hello.out
-    # remove compiled file
-    - name: remove
-      run: rm ./hello.out
