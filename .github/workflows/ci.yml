@@ -2,7 +2,7 @@ name: C/C++ CI
 
 on:
   push:
-    branches: [ main ]
+    branches: [ main, ci ]
   pull_request:
     branches: [ main ]
 
@@ -13,7 +13,6 @@ jobs:
         os: [ ubuntu-latest ]
     runs-on: ${{ matrix.os }}
     steps:
-    - uses: actions/checkout@v2
     - name: print message
       if: startsWith(github.event.head_commit.message, 'PRINT_MESSAGE')
       run: echo github.event.head_commit.message
