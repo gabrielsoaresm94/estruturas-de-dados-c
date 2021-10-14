@@ -13,7 +13,9 @@ jobs:
         os: [ ubuntu-latest ]
     runs-on: ${{ matrix.os }}
     steps:
-    - uses: actions/checkout@v2
+    - name: print message
+      if: startsWith(github.event.head_commit.message, 'PRINT_MESSAGE')
+      run: echo github.event.head_commit.message
     # compile
     - name: compile
       run: gcc ./code/hello.c -o ./hello.out
