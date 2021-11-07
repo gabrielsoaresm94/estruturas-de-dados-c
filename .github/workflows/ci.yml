@@ -14,12 +14,15 @@ jobs:
     runs-on: ${{ matrix.os }}
     steps:
     - uses: actions/checkout@v2
-    - name: print message
-      if: startsWith(github.event.head_commit.message, 'PRINT_MESSAGE')
-      run: echo ${{ github.event.head_commit.message }}
-    # compile
-    - name: compile
-      run: gcc ./code/hello.c -o ./hello.out
-    # run
-    - name: run
-      run: ./hello.out
+    # read file
+    - name: read
+      run: |
+         chmod +x ./scripts/compile.sh
+         ./scripts/compile.sh
+    # # set env arr
+    # # compile
+    # - name: compile
+    #   run: gcc ./code/${{ env.arr }}.c -o ./${{ env.arr }}.out
+    # # run
+    # - name: run
+    #   run: ./${{ env.arr }}.out
