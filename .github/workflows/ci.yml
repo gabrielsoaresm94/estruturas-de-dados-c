@@ -17,10 +17,10 @@ jobs:
     # read file
     - name: read
       run: |
-         chmod +x ./scripts/compile.sh
-         ./scripts/compile.sh
+          chmod +x ./scripts/compile.sh
+          ./scripts/compile.sh
     - name: read env
-      run: echo ${{ env.ARRAY }}
+      run: echo ${{ env }}
     # # set env arr
     # # compile
     # - name: compile
