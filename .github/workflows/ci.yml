@@ -14,17 +14,10 @@ jobs:
     runs-on: ${{ matrix.os }}
     steps:
     - uses: actions/checkout@v2
-    # read file
-    - name: read
+    # Compile
+    - name: Compile
       run: |
           chmod +x ./scripts/compile.sh
           ./scripts/compile.sh
     - name: read env
       run: echo ${{ env }}
-    # # set env arr
-    # # compile
-    # - name: compile
-    #   run: gcc ./code/${{ env.arr }}.c -o ./${{ env.arr }}.out
-    # # run
-    # - name: run
-    #   run: ./${{ env.arr }}.out
