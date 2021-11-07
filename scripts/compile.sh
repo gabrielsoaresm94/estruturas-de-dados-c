@@ -7,6 +7,6 @@ while IFS= read -r line
 do
     VARIABLE=$(echo $line | grep -P '[^\/]+(?=\.)' -o)
     # ARRAY+=($VARIABLE)
-    echo "::set-env name=$VARIABLE::$VARIABLE"
+    echo "$VARIABLE=$VARIABLE" >> $GITHUB_ENV
 done < codes.md
 # echo ${ARRAY[*]}
