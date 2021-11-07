@@ -1,12 +1,11 @@
 #!/bin/bash
 
 VARIABLE=""
-# ARRAY=()
 mapfile -t codesArr < codes.md
 while IFS= read -r line
 do
     VARIABLE=$(echo $line | grep -P '[^\/]+(?=\.)' -o)
-    # ARRAY+=($VARIABLE)
     echo "$VARIABLE=$VARIABLE"
+    gcc ./code/$VARIABLE.c -o ./$VARIABLE.out
+    ./$VARIABLE.out
 done < codes.md
-# echo ${ARRAY[*]}
