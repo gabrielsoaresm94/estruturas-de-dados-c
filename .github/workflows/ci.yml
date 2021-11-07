@@ -2,7 +2,7 @@ name: C/C++ CI
 
 on:
   push:
-    branches: [ main ]
+    branches: [ main, ci ]
   pull_request:
     branches: [ main ]
 
@@ -14,12 +14,10 @@ jobs:
     runs-on: ${{ matrix.os }}
     steps:
     - uses: actions/checkout@v2
-    # compile
-    - name: compile
-      run: gcc ./code/hello.c -o ./hello.out
-    # run
-    - name: run
-      run: ./hello.out
-    # remove compiled file
-    - name: remove
-      run: rm ./hello.out
+    # Compile
+    - name: Compile
+      run: |
+          chmod +x ./scripts/compile.sh
+          ./scripts/compile.sh
+    - name: read env
+      run: echo ${{ env }}
